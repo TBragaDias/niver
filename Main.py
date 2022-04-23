@@ -9,7 +9,7 @@ import PIL.ImageTk as ptk
 
 app = Tk()
 app.title("Felipe Surpresa")
-app.geometry("1920x1080")
+app.attributes("-fullscreen", True)
 
 varBarra = DoubleVar()
 
@@ -21,10 +21,10 @@ pb.place(
 
 def step(tempo):
 
-    midia = vlc.MediaPlayer("C:\\Users\\Tiago Braga\\Desktop\\Aulas\\Video\\IMG_4809.MOV")
+    midia = vlc.MediaPlayer("C:\\Users\\Tiago Braga\\Desktop\\video\\IMG_4809.MOV")
     pygame.init()
     pygame.mixer.init()
-    file = "C:\\Users\\Tiago Braga\\Desktop\\Aulas\\Video\\abraba.mp3"
+    file = "C:\\Users\\Tiago Braga\\Desktop\\video\\abraba.mp3"
     cont = 0
     etapas = tempo/100
     pygame.mixer.music.load(file)
@@ -37,6 +37,7 @@ def step(tempo):
         label2.config(text='{}%'.format(cont))
         varBarra.set(cont)
         app.update()
+    midia.set_fullscreen(True)
     midia.play()
     pygame.mixer.music.stop()
 
@@ -61,7 +62,7 @@ label2.place(
 )
 
 # Label De PNG - Festa
-imagem = p.Image.open("C:\\Users\\Tiago Braga\\Desktop\\Aulas\\Video\\festa.png")
+imagem = p.Image.open("C:\\Users\\Tiago Braga\\Desktop\\video\\festa.png")
 pic = ptk.PhotoImage(imagem)
 
 label3 = Label(app, image=pic)
